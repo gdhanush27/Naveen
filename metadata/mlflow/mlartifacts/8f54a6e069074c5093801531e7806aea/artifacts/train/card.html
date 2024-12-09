@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Train@regression</title>
+        <style>
+            h1.title {
+            color: #4287f5;
+            }
+            h2.step-title {
+                color : #4287f5;
+            }
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
+
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+            }
+
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+            .tabcontent {
+                display: block;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+
+            .content-hide {
+                display: none;
+            }
+
+            .content-active {
+                display: block;
+            }
+            h3.section-title {
+                color: #57a8de;
+            }
+            .dataset-container {
+                width: max;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .stacktrace-container {
+                max-height: 300px;
+                overflow: auto;
+                display: flex;
+                flex-direction: column-reverse;
+                white-space: pre-wrap;
+            }
+        </style>
+    </head>
+   <body>
+        <div class="tab">
+            <div class="button-container-bkjt6u">
+                
+                    <button id=0 class="tablink-bkjt6u">
+                        Model Performance
+                    </button>
+                
+                    <button id=1 class="tablink-bkjt6u">
+                        Data Profile (Predictions)
+                    </button>
+                
+                    <button id=2 class="tablink-bkjt6u">
+                        Model Architecture
+                    </button>
+                
+                    <button id=3 class="tablink-bkjt6u">
+                        Model Schema
+                    </button>
+                
+                    <button id=4 class="tablink-bkjt6u">
+                        Worst Predictions
+                    </button>
+                
+                    <button id=5 class="tablink-bkjt6u">
+                        Data Profile (Worst vs Train)
+                    </button>
+                
+                    <button id=6 class="tablink-bkjt6u">
+                        Leaderboard
+                    </button>
+                
+                    <button id=7 class="tablink-bkjt6u">
+                        Best Parameters 
+                    </button>
+                
+                    <button id=8 class="tablink-bkjt6u">
+                        Warning Logs
+                    </button>
+                
+                    <button id=9 class="tablink-bkjt6u">
+                        Run Summary
+                    </button>
+                
+            </div>
+        </div>
+        <div class="tabcontent">
+            
+                <div class="content-bkjt6u content-hide"><h3 class='section-title'>Summary Metrics (Validation)</h3><div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_39a98 table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_39a98  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_39a98  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_39a98_row0_col0, #T_39a98_row0_col1, #T_39a98_row0_col2 {
+  font-weight: bold;
+}
+</style>
+<table id="T_39a98" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th id="T_39a98_level0_col0" class="col_heading level0 col0" >Metric</th>
+      <th id="T_39a98_level0_col1" class="col_heading level0 col1" >training</th>
+      <th id="T_39a98_level0_col2" class="col_heading level0 col2" >validation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_39a98_row0_col0" class="data row0 col0" >root_mean_squared_error</td>
+      <td id="T_39a98_row0_col1" class="data row0 col1" >7.08072</td>
+      <td id="T_39a98_row0_col2" class="data row0 col2" >5.6593</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row1_col0" class="data row1 col0" >example_count</td>
+      <td id="T_39a98_row1_col1" class="data row1 col1" >306</td>
+      <td id="T_39a98_row1_col2" class="data row1 col2" >38</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row2_col0" class="data row2 col0" >max_error</td>
+      <td id="T_39a98_row2_col1" class="data row2 col1" >37.8931</td>
+      <td id="T_39a98_row2_col2" class="data row2 col2" >21.5465</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row3_col0" class="data row3 col0" >mean_absolute_error</td>
+      <td id="T_39a98_row3_col1" class="data row3 col1" >5.0017</td>
+      <td id="T_39a98_row3_col2" class="data row3 col2" >3.86746</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row4_col0" class="data row4 col0" >mean_absolute_percentage_error</td>
+      <td id="T_39a98_row4_col1" class="data row4 col1" >0.154142</td>
+      <td id="T_39a98_row4_col2" class="data row4 col2" >0.126125</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row5_col0" class="data row5 col0" >mean_on_target</td>
+      <td id="T_39a98_row5_col1" class="data row5 col1" >30.6797</td>
+      <td id="T_39a98_row5_col2" class="data row5 col2" >30.8421</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row6_col0" class="data row6 col0" >mean_squared_error</td>
+      <td id="T_39a98_row6_col1" class="data row6 col1" >50.1367</td>
+      <td id="T_39a98_row6_col2" class="data row6 col2" >32.0277</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row7_col0" class="data row7 col0" >r2_score</td>
+      <td id="T_39a98_row7_col1" class="data row7 col1" >0.509824</td>
+      <td id="T_39a98_row7_col2" class="data row7 col2" >0.718994</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row8_col0" class="data row8 col0" >score</td>
+      <td id="T_39a98_row8_col1" class="data row8 col1" >0.509824</td>
+      <td id="T_39a98_row8_col2" class="data row8 col2" >0.718994</td>
+    </tr>
+    <tr>
+      <td id="T_39a98_row9_col0" class="data row9 col0" >sum_on_target</td>
+      <td id="T_39a98_row9_col1" class="data row9 col1" >9388</td>
+      <td id="T_39a98_row9_col2" class="data row9 col2" >1172</td>
+    </tr>
+  </tbody>
+</table>
+</div> </div>
+            
+                <div class="content-bkjt6u content-hide"><iframe srcdoc='
+        &lt;div style=&quot;background-color: white&quot;&gt;
+        &lt;script&gt;
+!function() {
+  let t = window.URL;
+  window.URL = function(n, e) {
+    if (typeof e === &quot;string&quot; &amp;&amp; e.startsWith(&quot;blob:&quot;)) {
+      return new URL(e);
+    } else {
+      return new t(n, e);
+    }
+  }
+}();
+&lt;/script&gt;
+        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;import&quot; href=&quot;https://raw.githubusercontent.com/PAIR-code/facets/1.0.0/facets-dist/facets-jupyter.html&quot; &gt;
+        &lt;facets-overview id=&quot;facets&quot; proto-input=&quot;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&quot; compare-mode=&quot;True&quot;&gt;&lt;/facets-overview&gt;
+        &lt;/div&gt;
+    ' width='100%' height='500' frameborder='0'></iframe></div>
+            
+                <div class="content-bkjt6u content-hide"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;pipeline&#x27;,
+                 Pipeline(steps=[(&#x27;identity&#x27;, FunctionTransformer())])),
+                (&#x27;linearregression&#x27;, LinearRegression())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;pipeline&#x27;,
+                 Pipeline(steps=[(&#x27;identity&#x27;, FunctionTransformer())])),
+                (&#x27;linearregression&#x27;, LinearRegression())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;pipeline: Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for pipeline: Pipeline</span></a></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;identity&#x27;, FunctionTransformer())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;FunctionTransformer<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.FunctionTransformer.html">?<span>Documentation for FunctionTransformer</span></a></label><div class="sk-toggleable__content fitted"><pre>FunctionTransformer()</pre></div> </div></div></div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div></div>
+            
+                <div class="content-bkjt6u content-hide"><div style="display: flex"><div style="margin: 5px"><h2>Inputs</h2><div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_ab269 table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_ab269  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_ab269  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+</style>
+<table id="T_ab269" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th id="T_ab269_level0_col0" class="col_heading level0 col0" >Name</th>
+      <th id="T_ab269_level0_col1" class="col_heading level0 col1" >Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_ab269_row0_col0" class="data row0 col0" >  Pregnant</td>
+      <td id="T_ab269_row0_col1" class="data row0 col1" >long</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row1_col0" class="data row1 col0" >  Glucose</td>
+      <td id="T_ab269_row1_col1" class="data row1 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row2_col0" class="data row2 col0" >  Diastolic_BP</td>
+      <td id="T_ab269_row2_col1" class="data row2 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row3_col0" class="data row3 col0" >  Skin_Fold</td>
+      <td id="T_ab269_row3_col1" class="data row3 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row4_col0" class="data row4 col0" >  Serum_Insulin</td>
+      <td id="T_ab269_row4_col1" class="data row4 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row5_col0" class="data row5 col0" >  BMI</td>
+      <td id="T_ab269_row5_col1" class="data row5 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row6_col0" class="data row6 col0" >  Diabetes_Pedigree</td>
+      <td id="T_ab269_row6_col1" class="data row6 col1" >double</td>
+    </tr>
+    <tr>
+      <td id="T_ab269_row7_col0" class="data row7 col0" >  Class</td>
+      <td id="T_ab269_row7_col1" class="data row7 col1" >long</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+<div style="margin: 5px"><h2>Outputs</h2><div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_73123 table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_73123  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_73123  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+</style>
+<table id="T_73123" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th id="T_73123_level0_col0" class="col_heading level0 col0" >Name</th>
+      <th id="T_73123_level0_col1" class="col_heading level0 col1" >Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_73123_row0_col0" class="data row0 col0" >  -</td>
+      <td id="T_73123_row0_col1" class="data row0 col1" >Tensor(&#x27;float64&#x27;, (-1,))</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div></div>
+            
+                <div class="content-bkjt6u content-hide"><div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_892d5 table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_892d5  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_892d5  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+</style>
+<table id="T_892d5" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th id="T_892d5_level0_col0" class="col_heading level0 col0" >absolute_error</th>
+      <th id="T_892d5_level0_col1" class="col_heading level0 col1" >prediction</th>
+      <th id="T_892d5_level0_col2" class="col_heading level0 col2" >Age</th>
+      <th id="T_892d5_level0_col3" class="col_heading level0 col3" >Pregnant</th>
+      <th id="T_892d5_level0_col4" class="col_heading level0 col4" >Glucose</th>
+      <th id="T_892d5_level0_col5" class="col_heading level0 col5" >Diastolic_BP</th>
+      <th id="T_892d5_level0_col6" class="col_heading level0 col6" >Skin_Fold</th>
+      <th id="T_892d5_level0_col7" class="col_heading level0 col7" >Serum_Insulin</th>
+      <th id="T_892d5_level0_col8" class="col_heading level0 col8" >BMI</th>
+      <th id="T_892d5_level0_col9" class="col_heading level0 col9" >Diabetes_Pedigree</th>
+      <th id="T_892d5_level0_col10" class="col_heading level0 col10" >Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_892d5_row0_col0" class="data row0 col0" >37.89308958268839</td>
+      <td id="T_892d5_row0_col1" class="data row0 col1" >43.10691041731161</td>
+      <td id="T_892d5_row0_col2" class="data row0 col2" >81</td>
+      <td id="T_892d5_row0_col3" class="data row0 col3" >9</td>
+      <td id="T_892d5_row0_col4" class="data row0 col4" >134.0</td>
+      <td id="T_892d5_row0_col5" class="data row0 col5" >74.0</td>
+      <td id="T_892d5_row0_col6" class="data row0 col6" >33.0</td>
+      <td id="T_892d5_row0_col7" class="data row0 col7" >60.0</td>
+      <td id="T_892d5_row0_col8" class="data row0 col8" >25.9</td>
+      <td id="T_892d5_row0_col9" class="data row0 col9" >0.46</td>
+      <td id="T_892d5_row0_col10" class="data row0 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row1_col0" class="data row1 col0" >30.544136396174874</td>
+      <td id="T_892d5_row1_col1" class="data row1 col1" >27.455863603825126</td>
+      <td id="T_892d5_row1_col2" class="data row1 col2" >58</td>
+      <td id="T_892d5_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_892d5_row1_col4" class="data row1 col4" >173.0</td>
+      <td id="T_892d5_row1_col5" class="data row1 col5" >78.0</td>
+      <td id="T_892d5_row1_col6" class="data row1 col6" >32.0</td>
+      <td id="T_892d5_row1_col7" class="data row1 col7" >265.0</td>
+      <td id="T_892d5_row1_col8" class="data row1 col8" >46.5</td>
+      <td id="T_892d5_row1_col9" class="data row1 col9" >1.159</td>
+      <td id="T_892d5_row1_col10" class="data row1 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row2_col0" class="data row2 col0" >23.078297450833148</td>
+      <td id="T_892d5_row2_col1" class="data row2 col1" >36.92170254916685</td>
+      <td id="T_892d5_row2_col2" class="data row2 col2" >60</td>
+      <td id="T_892d5_row2_col3" class="data row2 col3" >6</td>
+      <td id="T_892d5_row2_col4" class="data row2 col4" >129.0</td>
+      <td id="T_892d5_row2_col5" class="data row2 col5" >90.0</td>
+      <td id="T_892d5_row2_col6" class="data row2 col6" >7.0</td>
+      <td id="T_892d5_row2_col7" class="data row2 col7" >326.0</td>
+      <td id="T_892d5_row2_col8" class="data row2 col8" >19.6</td>
+      <td id="T_892d5_row2_col9" class="data row2 col9" >0.582</td>
+      <td id="T_892d5_row2_col10" class="data row2 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row3_col0" class="data row3 col0" >22.706887971941185</td>
+      <td id="T_892d5_row3_col1" class="data row3 col1" >38.293112028058815</td>
+      <td id="T_892d5_row3_col2" class="data row3 col2" >61</td>
+      <td id="T_892d5_row3_col3" class="data row3 col3" >7</td>
+      <td id="T_892d5_row3_col4" class="data row3 col4" >142.0</td>
+      <td id="T_892d5_row3_col5" class="data row3 col5" >60.0</td>
+      <td id="T_892d5_row3_col6" class="data row3 col6" >33.0</td>
+      <td id="T_892d5_row3_col7" class="data row3 col7" >190.0</td>
+      <td id="T_892d5_row3_col8" class="data row3 col8" >28.8</td>
+      <td id="T_892d5_row3_col9" class="data row3 col9" >0.687</td>
+      <td id="T_892d5_row3_col10" class="data row3 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row4_col0" class="data row4 col0" >20.922630292150934</td>
+      <td id="T_892d5_row4_col1" class="data row4 col1" >37.077369707849066</td>
+      <td id="T_892d5_row4_col2" class="data row4 col2" >58</td>
+      <td id="T_892d5_row4_col3" class="data row4 col3" >5</td>
+      <td id="T_892d5_row4_col4" class="data row4 col4" >144.0</td>
+      <td id="T_892d5_row4_col5" class="data row4 col5" >82.0</td>
+      <td id="T_892d5_row4_col6" class="data row4 col6" >26.0</td>
+      <td id="T_892d5_row4_col7" class="data row4 col7" >285.0</td>
+      <td id="T_892d5_row4_col8" class="data row4 col8" >32.0</td>
+      <td id="T_892d5_row4_col9" class="data row4 col9" >0.452</td>
+      <td id="T_892d5_row4_col10" class="data row4 col10" >1</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row5_col0" class="data row5 col0" >20.428137448159873</td>
+      <td id="T_892d5_row5_col1" class="data row5 col1" >34.57186255184013</td>
+      <td id="T_892d5_row5_col2" class="data row5 col2" >55</td>
+      <td id="T_892d5_row5_col3" class="data row5 col3" >6</td>
+      <td id="T_892d5_row5_col4" class="data row5 col4" >103.0</td>
+      <td id="T_892d5_row5_col5" class="data row5 col5" >72.0</td>
+      <td id="T_892d5_row5_col6" class="data row5 col6" >32.0</td>
+      <td id="T_892d5_row5_col7" class="data row5 col7" >190.0</td>
+      <td id="T_892d5_row5_col8" class="data row5 col8" >37.7</td>
+      <td id="T_892d5_row5_col9" class="data row5 col9" >0.324</td>
+      <td id="T_892d5_row5_col10" class="data row5 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row6_col0" class="data row6 col0" >19.572975386446338</td>
+      <td id="T_892d5_row6_col1" class="data row6 col1" >30.427024613553662</td>
+      <td id="T_892d5_row6_col2" class="data row6 col2" >50</td>
+      <td id="T_892d5_row6_col3" class="data row6 col3" >1</td>
+      <td id="T_892d5_row6_col4" class="data row6 col4" >164.0</td>
+      <td id="T_892d5_row6_col5" class="data row6 col5" >82.0</td>
+      <td id="T_892d5_row6_col6" class="data row6 col6" >43.0</td>
+      <td id="T_892d5_row6_col7" class="data row6 col7" >67.0</td>
+      <td id="T_892d5_row6_col8" class="data row6 col8" >32.8</td>
+      <td id="T_892d5_row6_col9" class="data row6 col9" >0.341</td>
+      <td id="T_892d5_row6_col10" class="data row6 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row7_col0" class="data row7 col0" >19.002907690946216</td>
+      <td id="T_892d5_row7_col1" class="data row7 col1" >43.997092309053784</td>
+      <td id="T_892d5_row7_col2" class="data row7 col2" >63</td>
+      <td id="T_892d5_row7_col3" class="data row7 col3" >10</td>
+      <td id="T_892d5_row7_col4" class="data row7 col4" >101.0</td>
+      <td id="T_892d5_row7_col5" class="data row7 col5" >76.0</td>
+      <td id="T_892d5_row7_col6" class="data row7 col6" >48.0</td>
+      <td id="T_892d5_row7_col7" class="data row7 col7" >180.0</td>
+      <td id="T_892d5_row7_col8" class="data row7 col8" >32.9</td>
+      <td id="T_892d5_row7_col9" class="data row7 col9" >0.171</td>
+      <td id="T_892d5_row7_col10" class="data row7 col10" >0</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row8_col0" class="data row8 col0" >18.657372824141802</td>
+      <td id="T_892d5_row8_col1" class="data row8 col1" >34.3426271758582</td>
+      <td id="T_892d5_row8_col2" class="data row8 col2" >53</td>
+      <td id="T_892d5_row8_col3" class="data row8 col3" >2</td>
+      <td id="T_892d5_row8_col4" class="data row8 col4" >197.0</td>
+      <td id="T_892d5_row8_col5" class="data row8 col5" >70.0</td>
+      <td id="T_892d5_row8_col6" class="data row8 col6" >45.0</td>
+      <td id="T_892d5_row8_col7" class="data row8 col7" >543.0</td>
+      <td id="T_892d5_row8_col8" class="data row8 col8" >30.5</td>
+      <td id="T_892d5_row8_col9" class="data row8 col9" >0.158</td>
+      <td id="T_892d5_row8_col10" class="data row8 col10" >1</td>
+    </tr>
+    <tr>
+      <td id="T_892d5_row9_col0" class="data row9 col0" >17.620917741326288</td>
+      <td id="T_892d5_row9_col1" class="data row9 col1" >24.379082258673712</td>
+      <td id="T_892d5_row9_col2" class="data row9 col2" >42</td>
+      <td id="T_892d5_row9_col3" class="data row9 col3" >1</td>
+      <td id="T_892d5_row9_col4" class="data row9 col4" >100.0</td>
+      <td id="T_892d5_row9_col5" class="data row9 col5" >66.0</td>
+      <td id="T_892d5_row9_col6" class="data row9 col6" >29.0</td>
+      <td id="T_892d5_row9_col7" class="data row9 col7" >196.0</td>
+      <td id="T_892d5_row9_col8" class="data row9 col8" >32.0</td>
+      <td id="T_892d5_row9_col9" class="data row9 col9" >0.444</td>
+      <td id="T_892d5_row9_col10" class="data row9 col10" >0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+            
+                <div class="content-bkjt6u content-hide"><iframe srcdoc='
+        &lt;div style=&quot;background-color: white&quot;&gt;
+        &lt;script&gt;
+!function() {
+  let t = window.URL;
+  window.URL = function(n, e) {
+    if (typeof e === &quot;string&quot; &amp;&amp; e.startsWith(&quot;blob:&quot;)) {
+      return new URL(e);
+    } else {
+      return new t(n, e);
+    }
+  }
+}();
+&lt;/script&gt;
+        &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js&quot;&gt;&lt;/script&gt;
+        &lt;link rel=&quot;import&quot; href=&quot;https://raw.githubusercontent.com/PAIR-code/facets/1.0.0/facets-dist/facets-jupyter.html&quot; &gt;
+        &lt;facets-overview id=&quot;facets&quot; proto-input=&quot;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&quot; compare-mode=&quot;True&quot;&gt;&lt;/facets-overview&gt;
+        &lt;/div&gt;
+    ' width='100%' height='500' frameborder='0'></iframe></div>
+            
+                <div class="content-bkjt6u content-hide"><div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_4b55f table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_4b55f  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_4b55f  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+</style>
+<table id="T_4b55f" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_4b55f_level0_col0" class="col_heading level0 col0" >Latest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_4b55f_level0_row0" class="row_heading level0 row0" >Model Rank</th>
+      <td id="T_4b55f_row0_col0" class="data row0 col0" >&gt; 0</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row1" class="row_heading level0 row1" >root_mean_squared_error</th>
+      <td id="T_4b55f_row1_col0" class="data row1 col0" >5.6593</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row2" class="row_heading level0 row2" >max_error</th>
+      <td id="T_4b55f_row2_col0" class="data row2 col0" >21.5465</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row3" class="row_heading level0 row3" >mean_absolute_error</th>
+      <td id="T_4b55f_row3_col0" class="data row3 col0" >3.86746</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row4" class="row_heading level0 row4" >mean_absolute_percentage_error</th>
+      <td id="T_4b55f_row4_col0" class="data row4 col0" >0.126125</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row5" class="row_heading level0 row5" >mean_squared_error</th>
+      <td id="T_4b55f_row5_col0" class="data row5 col0" >32.0277</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row6" class="row_heading level0 row6" >Run Time</th>
+      <td id="T_4b55f_row6_col0" class="data row6 col0" >2024-12-09 11:54:54</td>
+    </tr>
+    <tr>
+      <th id="T_4b55f_level0_row7" class="row_heading level0 row7" >Run ID</th>
+      <td id="T_4b55f_row7_col0" class="data row7 col0" >8f54a6e069074c5093801531e7806aea</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+            
+                <div class="content-bkjt6u content-hide"><b>Best parameters:</b><br><pre># hardcoded parameters 
+fit_intercept: 'True'
+
+# default parameters 
+copy_X: 'True'
+n_jobs: None
+positive: 'False'
+
+</pre><br><br> </div>
+            
+                <div class="content-bkjt6u content-hide"><pre>2024/12/09 11:54:54 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:54:54 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:54:54 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:08 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/pyfunc/__init__.py:2474: The `code_path` argument is replaced by `code_paths` and is deprecated as of MLflow version 2.12.0. This argument will be removed in a future release of MLflow.
+2024/12/09 11:55:11 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:11 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:12 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:12 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/sklearn/metrics/_regression.py:492: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/sklearn/metrics/_regression.py:492: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:55:13 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+</pre></div>
+            
+                <div class="content-bkjt6u content-hide"><p><strong>MLflow Run ID:</strong> <code>8f54a6e069074c5093801531e7806aea</code></p> <p><strong>MLflow Model URI:</strong> <code>runs:/8f54a6e069074c5093801531e7806aea/train/model</code></p></div>
+            
+        </div>
+        <script>
+            function onclickTab(event) {
+                 const tablinks = document.getElementsByClassName("tablink-bkjt6u");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace("active", "");
+                }
+                event.target.classList.add("active");
+
+                const tabId = event.target.id;
+                const tabContents = document.getElementsByClassName("content-bkjt6u");
+                for (i = 0; i < tabContents.length; i++) {
+                    tabContents[i].className = tabContents[i].className.replace("content-active", "content-hide");
+                }
+                tabContents[tabId].classList.add("content-active");
+            }
+            (function() {
+                const buttonsContainer = document.getElementsByClassName("button-container-bkjt6u")[0]
+                buttonsContainer.addEventListener("click", onclickTab);
+
+                const tablinks = document.getElementsByClassName("tablink-bkjt6u");
+                tablinks[0].classList.add("active");
+                const tabContents = document.getElementsByClassName("content-bkjt6u");
+                tabContents[0].classList.add("content-active");
+            })()
+        </script>
+   </body>
+</html>

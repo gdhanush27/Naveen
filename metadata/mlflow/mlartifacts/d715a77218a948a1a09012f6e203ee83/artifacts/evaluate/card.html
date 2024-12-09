@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Evaluate@regression</title>
+        <style>
+            h1.title {
+            color: #4287f5;
+            }
+            h2.step-title {
+                color : #4287f5;
+            }
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
+
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+            }
+
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+            .tabcontent {
+                display: block;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+
+            .content-hide {
+                display: none;
+            }
+
+            .content-active {
+                display: block;
+            }
+            h3.section-title {
+                color: #57a8de;
+            }
+            .dataset-container {
+                width: max;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .stacktrace-container {
+                max-height: 300px;
+                overflow: auto;
+                display: flex;
+                flex-direction: column-reverse;
+                white-space: pre-wrap;
+            }
+        </style>
+    </head>
+   <body>
+        <div class="tab">
+            <div class="button-container-9o0j2f">
+                
+                    <button id=0 class="tablink-9o0j2f">
+                        Model Performance (Test)
+                    </button>
+                
+                    <button id=1 class="tablink-9o0j2f">
+                        Warning Logs
+                    </button>
+                
+                    <button id=2 class="tablink-9o0j2f">
+                        Run Summary
+                    </button>
+                
+            </div>
+        </div>
+        <div class="tabcontent">
+            
+                <div class="content-9o0j2f content-hide"><h3 class='section-title'>Summary Metrics</h3><b>NOTE</b>: Use evaluation metrics over test dataset with care. Fine-tuning model over the test dataset is not advised.<div style="max-height: 500px; overflow: scroll;"><style type="text/css">
+#T_cbe95 table {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_cbe95  th {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_cbe95  td {
+  border: 1px solid grey;
+  text-align: left;
+  padding: 5px;
+}
+#T_cbe95_row0_col0, #T_cbe95_row0_col1, #T_cbe95_row0_col2 {
+  font-weight: bold;
+}
+</style>
+<table id="T_cbe95" style="border-collapse:collapse">
+  <thead>
+    <tr>
+      <th id="T_cbe95_level0_col0" class="col_heading level0 col0" >Metric</th>
+      <th id="T_cbe95_level0_col1" class="col_heading level0 col1" >validation</th>
+      <th id="T_cbe95_level0_col2" class="col_heading level0 col2" >test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_cbe95_row0_col0" class="data row0 col0" >root_mean_squared_error</td>
+      <td id="T_cbe95_row0_col1" class="data row0 col1" >5.6593</td>
+      <td id="T_cbe95_row0_col2" class="data row0 col2" >7.240194</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row1_col0" class="data row1 col0" >example_count</td>
+      <td id="T_cbe95_row1_col1" class="data row1 col1" >38</td>
+      <td id="T_cbe95_row1_col2" class="data row1 col2" >48.000000</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row2_col0" class="data row2 col0" >max_error</td>
+      <td id="T_cbe95_row2_col1" class="data row2 col1" >21.5465</td>
+      <td id="T_cbe95_row2_col2" class="data row2 col2" >29.624930</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row3_col0" class="data row3 col0" >mean_absolute_error</td>
+      <td id="T_cbe95_row3_col1" class="data row3 col1" >3.86746</td>
+      <td id="T_cbe95_row3_col2" class="data row3 col2" >4.990727</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row4_col0" class="data row4 col0" >mean_absolute_percentage_error</td>
+      <td id="T_cbe95_row4_col1" class="data row4 col1" >0.126125</td>
+      <td id="T_cbe95_row4_col2" class="data row4 col2" >0.145827</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row5_col0" class="data row5 col0" >mean_on_target</td>
+      <td id="T_cbe95_row5_col1" class="data row5 col1" >30.8421</td>
+      <td id="T_cbe95_row5_col2" class="data row5 col2" >32.062500</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row6_col0" class="data row6 col0" >mean_squared_error</td>
+      <td id="T_cbe95_row6_col1" class="data row6 col1" >32.0277</td>
+      <td id="T_cbe95_row6_col2" class="data row6 col2" >52.420412</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row7_col0" class="data row7 col0" >r2_score</td>
+      <td id="T_cbe95_row7_col1" class="data row7 col1" >0.718994</td>
+      <td id="T_cbe95_row7_col2" class="data row7 col2" >0.494419</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row8_col0" class="data row8 col0" >score</td>
+      <td id="T_cbe95_row8_col1" class="data row8 col1" >0.718994</td>
+      <td id="T_cbe95_row8_col2" class="data row8 col2" >0.494419</td>
+    </tr>
+    <tr>
+      <td id="T_cbe95_row9_col0" class="data row9 col0" >sum_on_target</td>
+      <td id="T_cbe95_row9_col1" class="data row9 col1" >1172</td>
+      <td id="T_cbe95_row9_col2" class="data row9 col2" >1539.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div> </div>
+            
+                <div class="content-9o0j2f content-hide"><pre>2024/12/09 11:39:58 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:39:58 /home/dhanush/regression/.v/lib/python3.12/site-packages/sklearn/metrics/_regression.py:492: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+2024/12/09 11:39:58 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:39:58 /home/dhanush/regression/.v/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py:1254: Call to deprecated method __init__. (You should use InstrumentationScope) -- Deprecated since version 1.11.1.
+2024/12/09 11:39:59 /home/dhanush/regression/.v/lib/python3.12/site-packages/mlflow/types/utils.py:407: Hint: Inferred schema contains integer column(s). Integer columns in Python cannot represent missing values. If your input data contains missing values at inference time, it will be encoded as floats and will cause a schema enforcement error. The best way to avoid this problem is to infer the model schema based on a realistic data sample (training dataset) that includes missing values. Alternatively, you can declare integer columns as doubles (float64) whenever these columns may have missing values. See `Handling Integers With Missing Values <https://www.mlflow.org/docs/latest/models.html#handling-integers-with-missing-values>`_ for more details.
+2024/12/09 11:39:59 /home/dhanush/regression/.v/lib/python3.12/site-packages/sklearn/metrics/_regression.py:492: 'squared' is deprecated in version 1.4 and will be removed in 1.6. To calculate the root mean squared error, use the function'root_mean_squared_error'.
+</pre></div>
+            
+                <div class="content-9o0j2f content-hide"><p><strong>MLflow Run ID:</strong> <code>d715a77218a948a1a09012f6e203ee83</code></p> <p><strong>MLflow Model URI:</strong> <code>runs:/d715a77218a948a1a09012f6e203ee83/train/model</code></p><p><strong>Validation status:</strong> <code>UNKNOWN</code></p></div>
+            
+        </div>
+        <script>
+            function onclickTab(event) {
+                 const tablinks = document.getElementsByClassName("tablink-9o0j2f");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace("active", "");
+                }
+                event.target.classList.add("active");
+
+                const tabId = event.target.id;
+                const tabContents = document.getElementsByClassName("content-9o0j2f");
+                for (i = 0; i < tabContents.length; i++) {
+                    tabContents[i].className = tabContents[i].className.replace("content-active", "content-hide");
+                }
+                tabContents[tabId].classList.add("content-active");
+            }
+            (function() {
+                const buttonsContainer = document.getElementsByClassName("button-container-9o0j2f")[0]
+                buttonsContainer.addEventListener("click", onclickTab);
+
+                const tablinks = document.getElementsByClassName("tablink-9o0j2f");
+                tablinks[0].classList.add("active");
+                const tabContents = document.getElementsByClassName("content-9o0j2f");
+                tabContents[0].classList.add("content-active");
+            })()
+        </script>
+   </body>
+</html>

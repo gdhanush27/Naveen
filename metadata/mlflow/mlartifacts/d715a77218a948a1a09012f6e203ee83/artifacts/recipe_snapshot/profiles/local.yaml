@@ -1,0 +1,11 @@
+experiment:
+  name: "Regression_Experiment"
+  tracking_uri: "sqlite:///metadata/mlflow/mlruns.db"
+  artifact_location: "./metadata/mlflow/mlartifacts"
+
+model_registry:
+  model_name: "Regression_Model"
+
+INGEST_CONFIG:
+  using: "parquet"
+  location: "/home/dhanush/regression/data/diabetes.parquet"

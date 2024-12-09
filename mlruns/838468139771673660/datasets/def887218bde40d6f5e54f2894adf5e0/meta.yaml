@@ -1,0 +1,15 @@
+digest: 8866d3e5
+name: dataset
+profile: '{"num_rows": 306, "num_elements": 2448}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "Pregnant", "required": true},
+  {"type": "double", "name": "Glucose", "required": true}, {"type": "double", "name":
+  "Diastolic_BP", "required": true}, {"type": "double", "name": "Skin_Fold", "required":
+  true}, {"type": "double", "name": "Serum_Insulin", "required": true}, {"type": "double",
+  "name": "BMI", "required": true}, {"type": "double", "name": "Diabetes_Pedigree",
+  "required": true}, {"type": "long", "name": "Class", "required": true}]}'
+source: '{"tags": {"mlflow.user": "dhanush", "mlflow.source.name": "https://github.com/HemanthhVV/mlflow-classification-recipe-learning",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.repoURL": "https://github.com/HemanthhVV/mlflow-classification-recipe-learning",
+  "mlflow.gitRepoURL": "https://github.com/HemanthhVV/mlflow-classification-recipe-learning",
+  "mlflow.source.git.commit": "e413e41e836ce76af89ecab2e6de56420415cd10", "mlflow.source.git.branch":
+  "main"}}'
+source_type: code

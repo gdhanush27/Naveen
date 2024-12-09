@@ -1,0 +1,15 @@
+artifact_uri: /home/dhanush/regression/metadata/mlflow/mlartifacts/22fdbd91d44c407f933d332f74d50aaa/artifacts
+end_time: 1733725619467
+entry_point_name: ''
+experiment_id: '838468139771673660'
+lifecycle_stage: active
+run_id: 22fdbd91d44c407f933d332f74d50aaa
+run_name: carefree-moth-255
+run_uuid: 22fdbd91d44c407f933d332f74d50aaa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733725619438
+status: 4
+tags: []
+user_id: dhanush

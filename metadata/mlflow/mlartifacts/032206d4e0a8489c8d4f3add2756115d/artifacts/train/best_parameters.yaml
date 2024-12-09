@@ -1,0 +1,8 @@
+# hardcoded parameters 
+fit_intercept: 'True'
+
+# default parameters 
+copy_X: 'True'
+n_jobs: None
+positive: 'False'
+

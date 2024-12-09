@@ -1,0 +1,15 @@
+artifact_uri: /home/dhanush/regression/metadata/mlflow/mlartifacts/c54eaef0d0834c7a910169caf43cb26e/artifacts
+end_time: 1733725907739
+entry_point_name: ''
+experiment_id: '838468139771673660'
+lifecycle_stage: active
+run_id: c54eaef0d0834c7a910169caf43cb26e
+run_name: persistent-fowl-556
+run_uuid: c54eaef0d0834c7a910169caf43cb26e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733725907709
+status: 4
+tags: []
+user_id: dhanush

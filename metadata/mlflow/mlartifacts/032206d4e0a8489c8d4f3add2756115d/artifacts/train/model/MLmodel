@@ -1,0 +1,34 @@
+artifact_path: train/model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts/sk_model
+        uri: /home/dhanush/.mlflow/recipes/783278f175106bdfed7d76cd21fb04d00c779191c610c10b4187d4ffb7b2e0f2/steps/train/outputs/sk_model
+    cloudpickle_version: 3.1.0
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.12.4
+    streamable: false
+  sklearn:
+    code: code
+    pickled_model: artifacts/sk_model/model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.17.0
+model_uuid: 387e5a90678d49c59cba8c31184b253d
+run_id: 032206d4e0a8489c8d4f3add2756115d
+signature:
+  inputs: '[{"type": "long", "name": "Pregnant", "required": true}, {"type": "double",
+    "name": "Glucose", "required": true}, {"type": "double", "name": "Diastolic_BP",
+    "required": true}, {"type": "double", "name": "Skin_Fold", "required": true},
+    {"type": "double", "name": "Serum_Insulin", "required": true}, {"type": "double",
+    "name": "BMI", "required": true}, {"type": "double", "name": "Diabetes_Pedigree",
+    "required": true}, {"type": "long", "name": "Class", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-12-09 06:32:58.313978'

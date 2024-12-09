@@ -1,0 +1,30 @@
+artifact_path: train/estimator
+flavors:
+  python_function:
+    code: code
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.4
+  sklearn:
+    code: code
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.17.0
+model_size_bytes: 22174
+model_uuid: 0f3955add2654275b46446208fbaec9c
+run_id: 8f54a6e069074c5093801531e7806aea
+signature:
+  inputs: '[{"type": "long", "name": "Pregnant", "required": true}, {"type": "double",
+    "name": "Glucose", "required": true}, {"type": "double", "name": "Diastolic_BP",
+    "required": true}, {"type": "double", "name": "Skin_Fold", "required": true},
+    {"type": "double", "name": "Serum_Insulin", "required": true}, {"type": "double",
+    "name": "BMI", "required": true}, {"type": "double", "name": "Diabetes_Pedigree",
+    "required": true}, {"type": "long", "name": "Class", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-12-09 06:24:54.253465'
